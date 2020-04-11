@@ -10,7 +10,7 @@ import numpy as np
 from ..BaseModel import BaseModel
 
 
-def load_mnist(validation_size=0.9, shuffle=False):
+def load_mnist(validation_size=0.1, shuffle=False):
     name = 'mnist_784'
     dir_path = './cache/'
     cache_path_X = dir_path + name + '_X.npy'

@@ -55,27 +55,28 @@ class Teacher(BaseModel):
             remainder: Integer equal to the number of rows that was
             not included in partitions
         """
-        partitions = list()
         n_samples = len(X)
         samples_per_teacher = n_samples // self._n_teachers
 
         # The number of remaining samples not used for training
         remainder = n_samples % self._n_teachers
-        idx = 0
 
-        # Creating real partitions for each teacher
-        for _ in range(self._n_teachers):
-            X_partition = list()
-            y_partition = list()
+        # Shape used to reshape the samples, into partitions for the teachers
+        X_partitioned_shape = (
+            self._n_teachers, samples_per_teacher,) + X.shape[1:]
+        y_partitioned_shape = (
+            self._n_teachers, samples_per_teacher,) + y.shape[1:]
 
-            for _ in range(samples_per_teacher):
-                X_partition.append(X[idx])
-                y_partition.append(y[idx])
-                idx += 1
+        # Truncate the data such that each teacher has same amount of samples
+        # then the data is reshaped into teacher partitions
+        if remainder:
+            X = X[:-remainder]
+            y = y[:-remainder]
 
-            partitions.append([X_partition, y_partition])
+        X_partitioned = X.reshape(X_partitioned_shape)
+        y_partitioned = y.reshape(y_partitioned_shape)
 
-        return partitions, remainder
+        return (X_partitioned, y_partitioned), remainder
 
     def fit(
         self,
@@ -93,7 +94,7 @@ class Teacher(BaseModel):
             y), f"Length of Columns ({len(X)}) and Lables ({len(y)}) are not equal"
 
         # Data partitioned for teacher training
-        partitions, remainder = self._partition(X, y)
+        (X_partitions, y_partitions), remainder = self._partition(X, y)
 
         # Fitting model
         for epoch in range(1, self._epochs + 1):
@@ -106,7 +107,8 @@ class Teacher(BaseModel):
                 teacher_range = range(self._n_teachers)
 
             for teacher_idx in teacher_range:
-                (X, y) = partitions[teacher_idx]
+                X = X_partitions[teacher_idx]
+                y = y_partitions[teacher_idx]
                 _model = self._models[teacher_idx]
                 _model.fit(X, y)
 
