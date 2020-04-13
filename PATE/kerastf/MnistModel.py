@@ -1,11 +1,10 @@
-from __future__ import print_function
-from tensorflow.python import keras
+from tensorflow import keras
 
-from tensorflow.python.keras.datasets import mnist
-from tensorflow.python.keras.models import Sequential
-from tensorflow.python.keras.layers import Dense, Dropout, Flatten
-from tensorflow.python.keras.layers import Conv2D, MaxPooling2D
-from tensorflow.python.keras import backend as K
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout, Flatten
+from tensorflow.keras.layers import Conv2D, MaxPooling2D
+from tensorflow.keras import backend as K
 
 from ..BaseModel import BaseModel
 
@@ -28,6 +27,7 @@ def load_mnist():
 
     # convert class vectors to binary class matrices
     y_train = keras.utils.to_categorical(y_train, num_classes)
+
     y_validation = keras.utils.to_categorical(y_validation, num_classes)
 
     return X_train, X_validation, y_train, y_validation
@@ -48,7 +48,10 @@ class CNN(BaseModel):
                         verbose=self._verbose)
 
     def predict(self, X):
-        return self._model.predict(X)
+        # TODO: remake network to output class
+        one_hot_predictions = self._model.predict(X)
+        class_prediction = one_hot_predictions.argmax(axis=1)
+        return class_prediction
 
     def _create_model(self):
         model = Sequential()

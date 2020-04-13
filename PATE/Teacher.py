@@ -140,12 +140,13 @@ class Teacher(BaseModel):
         assert isinstance(
             self._n_classes, int), "the number of classes (n_classes) should be an integer"
 
-        predictions = np.zeros((self._n_teachers, len(X), self._n_classes))
+        predictions = np.zeros(
+            (self._n_teachers, len(X), self._n_classes), dtype=int)
 
         # Each teacher tries to predicts the labels of the data, and produce a
         # onehot encoded prediction
         for i, model in enumerate(self._models):
-            model_predictions = model.predict(X)
+            model_predictions = model.predict(X).astype(int)
             one_hot_predictions = self._one_hot(model_predictions)
             predictions[i] = one_hot_predictions
 
@@ -161,8 +162,8 @@ class Teacher(BaseModel):
 
         # The aggregated noisy prediction
         noisy_predictions = noisy_histograms.argmax(axis=1)
-        print(histograms.argmax(axis=1))
-        print(noisy_histograms.argmax(axis=1))
+        # print(histograms.argmax(axis=1))
+        # print(noisy_histograms.argmax(axis=1))
 
         # TODO:: model_counts
         self._model_counts = list()
