@@ -6,8 +6,6 @@ import numpy as np
 X_train, X_validation, y_train, y_validation = load_mnist()
 y_validation = y_validation.argmax(axis=1) + 1
 
-# model = CNN()
-# model.fit(X_train, y_train)
 
 teachers = Teacher(CNN, epochs=2, n_teachers=50, verbose=True, n_classes=10)
 teachers.fit(X_train, y_train)

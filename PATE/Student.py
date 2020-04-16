@@ -1,6 +1,6 @@
 import tqdm
 import numpy as np
-from BaseModel import BaseModel
+from PATE.Base.Model import BaseModel
 
 from typing import List, Union, Tuple
 

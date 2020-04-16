@@ -1,18 +1,18 @@
 import tqdm
 import numpy as np
-from .BaseModel import BaseModel
-
 from typing import List, Union, Tuple
 
+from PATE.Base.AbstractBaseModel import ABM
 
-class Teacher(BaseModel):
+
+class Teacher(ABM):
     """A set of models to be trained on private data and predict using differential
     privacy as an aggregated ensemble of teachers.
     """
 
     def __init__(
             self,
-            model: BaseModel,
+            model: ABM,
             n_teachers: int = 50,
             epochs: int = 1,
             epsilon: float = 1,

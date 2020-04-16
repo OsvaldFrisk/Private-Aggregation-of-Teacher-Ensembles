@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras import backend as K
 
-from ..BaseModel import BaseModel
+from PATE.Base.Model import BaseModel
 
 
 def load_mnist():
@@ -35,7 +35,7 @@ def load_mnist():
 
 class CNN(BaseModel):
     def __init__(self):
-        self._batch_size = 64
+        self._batch_size = 128
         self._verbose = False
         self._input_shape = (28, 28, 1)
         self._num_classes = 10
@@ -46,6 +46,7 @@ class CNN(BaseModel):
         self._model.fit(X, y,
                         batch_size=self._batch_size,
                         verbose=self._verbose)
+        return self._model
 
     def predict(self, X):
         # TODO: remake network to output class
