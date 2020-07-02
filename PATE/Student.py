@@ -1,23 +1,23 @@
 import tqdm
 import numpy as np
-from PATE.Base.Model import BaseModel
+from PATE.Base.AbstractBaseModel import ABM
 
 from typing import List, Union, Tuple
 
 
-class Student(BaseModel):
+class Student(ABM):
     """A model to be trained on public data labeled by the teacher ensemble network.
     """
 
     def __init__(
             self,
-            model: BaseModel,
+            model: ABM,
             epochs: int = 1,
             verbose: bool = False,
             n_classes: Union[int, None] = None):
         """
         Args:
-            model: Model that implements the BaseModel interface, used in every teacher
+            model: Model that implements the abstract base model, used in every teacher
             epochs: Integer of epochs the model should be trained
             verbose: Boolean describing whether to print training information
             n_classes: The number of output classes to used in the classification

@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-from PATE.Base.Model import BaseModel
+from PATE.Base.AbstractBaseModel import ABM
 
 
 def load_mnist(validation_size=0.1, shuffle=False):
@@ -31,7 +31,7 @@ def load_mnist(validation_size=0.1, shuffle=False):
     return X_train, X_validation, y_train, y_validation
 
 
-class RFC(BaseModel):
+class RFC(ABM):
     def __init__(self):
         self._model = RandomForestClassifier(max_depth=10)
 

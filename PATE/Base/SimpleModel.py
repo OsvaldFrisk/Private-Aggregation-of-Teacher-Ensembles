@@ -14,4 +14,4 @@ class SimpleModel(ABM):
         pass
 
     def predict(self, X):
-        return np.ones((X.shape))
+        return np.random.randint(10, size=(len(X)))

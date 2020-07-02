@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras import backend as K
 
-from PATE.Base.Model import BaseModel
+from PATE.Base.AbstractBaseModel import ABM
 
 
 def load_mnist():
@@ -33,10 +33,10 @@ def load_mnist():
     return X_train, X_validation, y_train, y_validation
 
 
-class CNN(BaseModel):
+class CNN(ABM):
     def __init__(self):
         self._batch_size = 128
-        self._verbose = False
+        self._verbose = True
         self._input_shape = (28, 28, 1)
         self._num_classes = 10
 
