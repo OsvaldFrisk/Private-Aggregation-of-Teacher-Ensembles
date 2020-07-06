@@ -1,5 +1,5 @@
-from PATE.Teacher import Teacher
-from PATE.kerastf.MnistModel import load_mnist, CNN
+from pate.Teacher import Teacher
+from pate.kerastf.MnistModel import load_mnist, CNN
 from sklearn.metrics import accuracy_score
 import numpy as np
 

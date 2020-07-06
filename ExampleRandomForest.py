@@ -1,5 +1,5 @@
-from PATE.Teacher import Teacher
-from PATE.sklearn.MnistModel import load_mnist, RFC
+from pate.Teacher import Teacher
+from pate.sklearn.MnistModel import load_mnist, RFC
 from sklearn.metrics import accuracy_score
 import numpy as np
 

@@ -1,5 +1,5 @@
-from PATE.Teacher import Teacher
-from PATE.Base.SimpleModel import SimpleModel
+from pate.Teacher import Teacher
+from pate.base.SimpleModel import SimpleModel
 from sklearn.metrics import accuracy_score
 import numpy as np
 
