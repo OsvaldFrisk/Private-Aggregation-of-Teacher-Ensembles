@@ -6,7 +6,7 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras import backend as K
 
-from PATE.Base.AbstractBaseModel import ABM
+from pate.base.AbstractBaseModel import ABM
 
 
 def load_mnist():

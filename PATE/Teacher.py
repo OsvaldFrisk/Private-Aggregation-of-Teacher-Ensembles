@@ -2,7 +2,7 @@ import tqdm
 import numpy as np
 from typing import List, Union, Tuple
 
-from PATE.Base.AbstractBaseModel import ABM
+from pate.base.AbstractBaseModel import ABM
 
 
 class Teacher(ABM):

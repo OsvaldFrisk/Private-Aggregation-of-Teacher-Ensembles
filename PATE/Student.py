@@ -1,6 +1,6 @@
 import tqdm
 import numpy as np
-from PATE.Base.AbstractBaseModel import ABM
+from pate.base.AbstractBaseModel import ABM
 
 from typing import List, Union, Tuple
 
@@ -23,10 +23,8 @@ class Student(ABM):
             n_classes: The number of output classes to used in the classification
         """
         self._n_classes = n_classes
-        self._model = model
-        self._n_teachers = n_teachers
+        self._model = model()
         self._epochs = epochs
-        self._epsilon = epsilon
         self._verbose = verbose
         self._fit = False
 

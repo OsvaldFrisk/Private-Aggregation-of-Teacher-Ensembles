@@ -1,4 +1,4 @@
-from PATE.Base.AbstractBaseModel import ABM
+from pate.base.AbstractBaseModel import ABM
 from time import sleep
 import numpy as np
 
@@ -14,4 +14,4 @@ class SimpleModel(ABM):
         pass
 
     def predict(self, X):
-        return np.random.randint(10, size=(len(X)))
+        return np.ones(len(X))

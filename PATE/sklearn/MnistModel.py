@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-from PATE.Base.AbstractBaseModel import ABM
+from pate.base.AbstractBaseModel import ABM
 
 
 def load_mnist(validation_size=0.1, shuffle=False):
