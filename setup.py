@@ -9,5 +9,4 @@ setup(
     description='Python implementation of the Private Aggregation of Teacher Ensembles framework',
     author='Osvald Frisk',
     author_email='Osvald.Lorenz@gmail.com',
-
 )
