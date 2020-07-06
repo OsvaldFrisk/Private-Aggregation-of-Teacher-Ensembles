@@ -7,8 +7,8 @@ Test naming convention:
 
 import numpy as np
 import numpy.testing as npt
-from PATE.Teacher import Teacher as Teacher
-from PATE.Base.SimpleModel import SimpleModel
+from pate.Teacher import Teacher as Teacher
+from pate.base.SimpleModel import SimpleModel
 
 
 def setup():
