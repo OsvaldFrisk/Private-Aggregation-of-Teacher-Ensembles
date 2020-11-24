@@ -1,3 +1,4 @@
+"""Script to demonstrate the use of the Random Forest Classifier"""
 from pate.Teacher import Teacher
 from pate.sklearn.MnistModel import load_mnist, RFC
 from sklearn.metrics import accuracy_score

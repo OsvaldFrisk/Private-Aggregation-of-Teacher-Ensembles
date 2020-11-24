@@ -1,6 +1,5 @@
 from pate.Teacher import Teacher
 from pate.base.SimpleModel import SimpleModel
-from sklearn.metrics import accuracy_score
 import numpy as np
 
 X_train = np.random.random((20, 12))

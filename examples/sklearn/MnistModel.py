@@ -1,10 +1,7 @@
 from sklearn.model_selection import train_test_split
-from sklearn import datasets, metrics
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.datasets import fetch_openml
 from pathlib import Path
-import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
 
 from pate.base.AbstractBaseModel import ABM
